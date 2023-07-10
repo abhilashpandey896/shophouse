@@ -1,0 +1,38 @@
+
+<% @sum = 0%>
+<% @carts.each do |cart| %>
+  <p>
+    <strong>Name:</strong>
+    <%= Product.find(cart.product_id).name %>
+  </p>
+   <div>
+   <%= image_tag(Product.find(cart.product_id).image)%>
+   </div>
+  <p>
+    <strong>Title:</strong>
+    <%= Product.find(cart.product_id).title %>
+  </p>
+
+  <p>
+    <strong>Brand:</strong>
+    <%= Product.find(cart.product_id).brand %>
+  </p>
+
+  <p>
+    <strong>Price:</strong>
+    <%= Product.find(cart.product_id).price %>
+  </p>
+<div>
+    <p>quantity :<%= cart.quantity %>  <%= button_to "+",  cart_add_url(cart), method: :post %>
+    <%= button_to "-",  cart_reduce_url(cart), method: :post %> </p>
+ </div>   
+    <%= cart.totalamount %>
+    <% @sum +=  cart.totalamount %> 
+    <%= button_to "remove from cart", cart, method: :delete %>
+<%end%>
+<div>
+  <strong>TotalAmount :</strong><%= @sum %>
+</div>
+<div>
+<%= link_to "Back to products", products_path %>
+</div>

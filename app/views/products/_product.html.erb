@@ -1,0 +1,30 @@
+<div style="display:flex;align-items:center" id="<%= dom_id product %>">
+ <div>
+   <%= image_tag(product.image)%>
+   </div>
+   <div>
+  <p>
+    <strong>Name:</strong>
+    <%= product.name %>
+  </p>
+  
+  <p>
+    <strong>Title:</strong>
+    <%= product.title %>
+  </p>
+
+  <p>
+    <strong>Brand:</strong>
+    <%= product.brand %>
+  </p>
+
+  <p>
+    <strong>Price:</strong>
+    <%= product.price %>
+  </p>
+  </div>
+ <% if current_user.present?%>
+  <%= button_to "Add to cart", carts_url(product_id: product.id, totalamount: product.price), method: :post %>
+<% end %>
+</div>
+

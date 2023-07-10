@@ -1,0 +1,24 @@
+<p style="color: green"><%= notice %></p>
+ <%= link_to "go to cart", carts_path %>
+<h1>Products</h1>
+
+<%= form_with url: " /products/search_user", method: :get do |form| %>
+  <%= form.text_field :name %>
+  <%= form.text_field :brand %>
+  <%= form.submit "Search" %>
+<% end %>
+
+</div>
+<div id="products">
+  <% @products.each do |product| %>
+    <%= render product %>
+    <p>
+      <%= link_to "Show this product", product %>
+       
+    </p>
+  <% end %>
+</div>
+<%if can? :create, @product %>
+<%= link_to "New product", new_product_path %>
+<% end %>
+<%= will_paginate %>

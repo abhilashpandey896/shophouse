@@ -1,0 +1,26 @@
+<% @get_user.each do |pr| %>
+<p>
+    <strong>Name:</strong>
+    <%= pr.name %>
+  </p>
+   <div>
+   <%= image_tag(pr.image)%>
+   </div>
+  <p>
+    <strong>Title:</strong>
+    <%= pr.title %>
+  </p>
+
+  <p>
+    <strong>Brand:</strong>
+    <%= pr.brand %>
+  </p>
+
+  <p>
+    <strong>Price:</strong>
+    <%= pr.price %>
+  </p>
+ <%= link_to "show this product", pr %> 
+<% end %>
+ <%= link_to "Back to products", products_path %>
+  
